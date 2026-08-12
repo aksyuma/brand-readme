@@ -1,0 +1,19 @@
+{
+  "name": "brand-readme",
+  "version": "1.0.0",
+  "description": "Editorial SVG components for GitHub READMEs — hero banners, stats cards, tech stacks, timelines, and quote blocks. Brand-aligned, zero-dependency, WCAG AA compliant.",
+  "skills": [
+    {
+      "name": "brand-readme",
+      "path": "./skills/brand-readme",
+      "description": "Generate brand-aligned SVG components for GitHub README files."
+    }
+  ],
+  "commands": [
+    {
+      "name": "brand-readme:onboard",
+      "path": "./commands/onboard.md",
+      "description": "Extract brand tokens from a URL and write them to the style guide."
+    }
+  ]
+}

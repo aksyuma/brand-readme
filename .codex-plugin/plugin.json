@@ -1,0 +1,41 @@
+{
+  "name": "brand-readme",
+  "description": "Editorial SVG components for GitHub READMEs — hero banners, stats cards, tech stacks, timelines, and quote blocks. Brand-aligned, zero-dependency, WCAG AA compliant.",
+  "version": "1.0.0",
+  "author": {
+    "name": "Amos Syuma",
+    "url": "https://github.com/aksyuma"
+  },
+  "homepage": "https://github.com/aksyuma/brand-readme",
+  "repository": "https://github.com/aksyuma/brand-readme",
+  "license": "MIT",
+  "keywords": [
+    "readme",
+    "svg",
+    "github-profile",
+    "brand",
+    "design-system",
+    "wcag",
+    "editorial"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Brand Readme",
+    "shortDescription": "Generate editorial SVG components for GitHub READMEs.",
+    "longDescription": "Generate brand-aligned hero banners, stats cards, tech stack grids, milestone timelines, and editorial quote blocks as self-contained SVGs for GitHub Markdown.",
+    "developerName": "Amos Syuma",
+    "category": "Productivity",
+    "capabilities": [
+      "Read",
+      "Write"
+    ],
+    "websiteURL": "https://github.com/aksyuma/brand-readme",
+    "defaultPrompt": [
+      "Make me a hero banner for my project.",
+      "Stats card: 1.2ms p99, 14MB memory, 99.8% coverage.",
+      "Tech stack: Core (Go, Kafka), Data (Postgres, Redis), Infra (K8s, Terraform).",
+      "Onboard brand-readme to https://mysite.com"
+    ],
+    "brandColor": "#0969DA"
+  }
+}

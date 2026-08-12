@@ -430,7 +430,7 @@ def main():
 
     if args.apply:
         output_path = args.output or (
-            Path(__file__).parent.parent / "skills" / "brand-readme" / "references" / "style-guide.md"
+            Path(__file__).parent.parent / "references" / "style-guide.md"
         )
         output_path.parent.mkdir(parents=True, exist_ok=True)
         output_path.write_text(content)

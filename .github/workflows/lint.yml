@@ -1,0 +1,31 @@
+name: Lint SVG Contrast
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'skills/brand-readme/assets/**'
+      - 'skills/brand-readme/scripts/lint-contrast.py'
+  pull_request:
+    branches: [main]
+    paths:
+      - 'skills/brand-readme/assets/**'
+      - 'skills/brand-readme/scripts/lint-contrast.py'
+
+jobs:
+  contrast-lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Run WCAG AA contrast linter
+        run: python3 skills/brand-readme/scripts/lint-contrast.py --all skills/brand-readme/assets/
+
+      - name: Verify scripts parse cleanly
+        run: |
+          python3 -c "import ast; ast.parse(open('skills/brand-readme/scripts/onboard.py').read())"
+          python3 -c "import ast; ast.parse(open('skills/brand-readme/scripts/lint-contrast.py').read())"

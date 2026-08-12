@@ -1,6 +1,6 @@
 # Brand Readme
 
-**Editorial GitHub README components your designer won't hate.**
+**Static SVG components for GitHub READMEs. Brand-aligned, zero-dependency, WCAG AA compliant.**
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="skills/brand-readme/assets/template-hero-dark.svg">
@@ -8,164 +8,166 @@
   <img alt="Brand Readme Hero" src="skills/brand-readme/assets/template-hero.svg" width="800">
 </picture>
 
-5 component types. One agent skill for Claude Code, Codex, and Pi. Your brand in 60 seconds — the skill reads your website and maps colors + fonts to every SVG. No Shields.io. No neon pill badges. No 30-minute color-picking sessions.
+Five component types. One agent skill. Reads your site, extracts tokens, maps them to every output. No build step, no runtime, no external dependencies.
 
-## Why I built it
+---
 
-Every time I needed a README banner, a stats card, or a tech stack section, I'd get back generic badge soup that looked nothing like the rest of my site. So I built a skill for it. Five component types, editorial quality, matches your brand in 60 seconds by reading your website.
+## Why this exists
 
-> *The highest-grade design move is deletion. Target visual density: 3/10.*
+I kept getting generic badge output from agents — mismatched colours, default fonts, nothing that matched the rest of the project. The fix is a constrained design system packaged as a skill that agents can load on demand.
 
-## What it makes
+> *The highest-grade design move is deletion. Target density: 3/10.*
 
-All 5 components ship in light + dark variants. Self-contained SVGs with inline styles — no build step, no JS, no external images. Drop them straight into GitHub Markdown with `<picture>` tags.
+---
 
-| Component | Purpose |
+## Components
+
+| Type | Purpose |
 | :--- | :--- |
-| **Hero** | Repository headers, project intros, profile banners |
-| **Stats** | Metric callouts, benchmarks, engagement highlights |
-| **Stack** | Tech stack categorization without mismatched icons |
-| **Timeline** | Changelogs, roadmap progress, version transitions |
-| **Quote** | Testimonials, project philosophies, axioms |
+| **Hero** | Repository headers, project banners |
+| **Stats** | Metric callouts, benchmarks |
+| **Stack** | Tech stack categorization |
+| **Timeline** | Changelogs, roadmap milestones |
+| **Quote** | Architectural axioms, project principles |
+
+All ship as self-contained SVG with inline `<style>`. Light + dark variants. Embed via `<picture>` tags.
+
+---
 
 ## Install
 
 **Pi:**
-
 ```
-pi install <your-username>/brand-readme
+pi install aksyuma/brand-readme
 ```
 
 **Claude Code:**
-
 ```
 /plugin install brand-readme@brand-readme
 ```
 
 **Codex:**
-
 ```
-npx skills add <repo-url> --skill brand-readme
+npx skills add https://github.com/aksyuma/brand-readme --skill brand-readme
 ```
 
-### Editable install
-
-Clone the repo and install the local path if you plan to customize the style guide:
+### Local install (for customization)
 
 ```bash
-git clone <repo-url> ~/code/brand-readme
-
-# Pi
+git clone https://github.com/aksyuma/brand-readme.git ~/code/brand-readme
 pi install ~/code/brand-readme
-
-# Claude Code
+# or
 ln -s ~/code/brand-readme/skills/brand-readme ~/.claude/skills/brand-readme
 ```
 
-## Onboarding — make it look like *your* brand
+---
 
-Out of the box, components render in a clean **GitHub editorial palette** (white paper, jet ink, blue accent). Good enough to screenshot straight away. But 60 seconds of onboarding is better.
+## Onboarding
 
-### The flow
+Default palette is GitHub editorial (white paper, jet ink, blue accent). Run onboarding to extract your brand:
 
 ```
-You:     "onboard brand-readme to https://yoursite.com"
-Agent:   → fetches the homepage
-         → extracts dominant palette + font stack
-         → maps values to semantic roles: paper, ink, muted, accent
-         → verifies WCAG AA contrast
-         → shows proposed diff
-         → writes tokens to references/style-guide.md
-You:     "yes, apply it"
+/brand-readme:onboard https://yoursite.com
 ```
 
-### What gets extracted
+The agent fetches the page, maps computed CSS to semantic roles, verifies WCAG AA contrast, and writes tokens to `references/style-guide.md`.
 
-| Detected from your site | Becomes |
+### Extraction mapping
+
+| Source | Token |
 | :--- | :--- |
-| `<body>` background | `--paper` token |
-| Primary text color | `--ink` token |
-| Secondary / caption text | `--muted` token |
-| Cards or containers | `--paper-2` token |
-| Most-used brand color (CTA, link) | `--accent` token |
-| `<h1>` font family | `--font-title` |
-| `<body>` font family | `--font-body` |
-| `<code>` / `<pre>` font | `--font-mono` |
+| `<body>` background | `--paper` |
+| Primary text colour | `--ink` |
+| Secondary text | `--muted` |
+| Container fill | `--paper-2` |
+| CTA / link colour | `--accent` |
+| Heading font | `--font-title` |
+| Body font | `--font-body` |
+| Code font | `--font-mono` |
 
-### Contrast checks happen automatically
+Contrast is checked automatically. If a pair fails (< 4.5:1), luminance is adjusted and you're shown the diff before anything is written.
 
-Before writing tokens, the skill verifies WCAG AA contrast on `ink` over `paper`. If your site has a color that fails contrast at SVG text sizes (9–12px), it proposes an adjusted value and explains why.
+---
 
 ## Quickstart
 
 ```bash
-# Preview the template SVGs
-open skills/brand-readme/assets/template-hero.svg       # macOS
-xdg-open skills/brand-readme/assets/template-hero.svg  # Linux
+# Preview templates
+open skills/brand-readme/assets/template-hero.svg
 
-# In Claude Code, Codex, or Pi, ask:
-# "Make me a hero banner for my project: title 'Dataflow', tagline 'Real-time stream processing engine'"
-# "Stats card: 1.2ms p99 latency, 14MB memory, 99.8% test coverage"
-# "Tech stack: Core (Rust, Tokio, Wasm), Data (Postgres, Redis), Infra (Docker, K8s)"
+# Ask an agent:
+# "Hero banner: title 'Dataflow', tagline 'Real-time stream processing engine'"
+# "Stats card: 1.2ms p99, 14MB memory, 99.8% coverage"
+# "Tech stack: Core (Go, Kafka), Data (Postgres, Redis), Infra (K8s, Terraform)"
 ```
+
+---
 
 ## Architecture
 
-Progressive disclosure. `SKILL.md` is a lean index — it tells the agent how to pick a component and where to look for detail. Each component lives in its own reference file, loaded only when relevant.
+Progressive disclosure. The agent loads only what is needed for the request.
 
 ```
 brand-readme/
-├── commands/                         — agent slash commands (future)
-├── prompts/                          — prompt templates (future)
+├── commands/
+│   └── onboard.md                    — agent slash command
 ├── skills/
 │   └── brand-readme/
-│       ├── SKILL.md                  — philosophy, routing guide, checklist
+│       ├── SKILL.md                  — routing index, constraints
 │       ├── references/
-│       │   ├── style-guide.md        — single source of truth for tokens
-│       │   ├── onboarding.md         — URL-to-tokens extraction flow
-│       │   ├── component-hero.md     — hero/banner spec
-│       │   ├── component-stats.md    — stats/metrics spec
-│       │   ├── component-stack.md    — tech stack spec
-│       │   ├── component-history.md  — timeline/milestone spec
-│       │   └── component-quote.md    — editorial callout spec
+│       │   ├── style-guide.md        — token store
+│       │   ├── onboarding.md         — extraction spec
+│       │   ├── component-hero.md
+│       │   ├── component-stats.md
+│       │   ├── component-stack.md
+│       │   ├── component-history.md
+│       │   └── component-quote.md
 │       ├── scripts/
-│       │   ├── onboard.py            — token extraction scraper
-│       │   └── lint-contrast.py      — WCAG AA contrast linter
+│       │   ├── onboard.py            — token extraction
+│       │   └── lint-contrast.py      — WCAG AA linter
 │       └── assets/
-│           ├── template-hero.svg     — light hero template
-│           ├── template-hero-dark.svg— dark hero template
-│           └── template-stats.svg    — stats template
-└── docs/screenshots/                 — images for this README
+│           ├── template-hero.svg
+│           ├── template-hero-dark.svg
+│           └── template-stats.svg
+└── .github/
+    └── workflows/lint.yml            — CI contrast checks
 ```
 
 ### What loads when
 
-| You ask for… | Agent loads |
+| Request | Loaded |
 | :--- | :--- |
-| "Make me a hero banner" | `SKILL.md` + `references/component-hero.md` |
-| "Stats card with metrics" | `SKILL.md` + `references/component-stats.md` |
-| "Show my tech stack" | `SKILL.md` + `references/component-stack.md` |
-| "Onboard to my site" | `SKILL.md` + `references/onboarding.md` + `references/style-guide.md` |
+| Hero banner | `SKILL.md` + `component-hero.md` |
+| Stats card | `SKILL.md` + `component-stats.md` |
+| Tech stack | `SKILL.md` + `component-stack.md` |
+| Onboarding | `SKILL.md` + `onboarding.md` + `style-guide.md` |
 
-## The design system (in one paragraph)
+---
 
-One accent color, 1–2 focal elements per SVG. Three font stacks: system sans (titles + body), system mono (metrics, versions, sublabels). 1px hairline borders, no shadows, max border-radius 4px. Every coordinate, width, and gap divisible by 4 — non-negotiable, it's what keeps the components from feeling AI-generated. Target visual density: 3/10 to 4/10.
+## Design constraints
 
-## Skin lint
+One accent colour per SVG. System font stacks (sans for titles/body, mono for metrics). 1px hairlines, no shadows, `rx` of 0 or 4. Every coordinate divisible by 4. These are the constraints that prevent the output from looking generated.
 
-Before committing a new SVG, run the contrast linter:
+---
+
+## Linting
 
 ```bash
-python3 scripts/lint-contrast.py skills/brand-readme/assets/template-hero.svg
-python3 scripts/lint-contrast.py --all skills/brand-readme/assets/
+python3 skills/brand-readme/scripts/lint-contrast.py --all skills/brand-readme/assets/
 ```
 
-## When *not* to use this skill
+Validates WCAG AA ratios (≥ 4.5:1 normal text, ≥ 3:1 large text) on all SVG output.
 
-- **Diagrams and flows** → use `diagram-design`
-- **Interactive charts** → SVGs are static; use a real charting library
-- **Standard markdown content** → just write markdown
-- **More than 5 data points** → use a markdown table
+---
+
+## When not to use this
+
+- **Diagrams or flows** — use [diagram-design](https://github.com/cathrynlavery/diagram-design)
+- **Interactive content** — SVGs are static
+- **Body text** — use markdown
+- **> 5 data points** — use a table
+
+---
 
 ## License
 

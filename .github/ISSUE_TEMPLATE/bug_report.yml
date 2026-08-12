@@ -1,0 +1,30 @@
+---
+name: Bug Report
+description: Something isn't rendering correctly or a script is failing
+labels: ["bug"]
+---
+
+## Describe the bug
+
+<!-- A clear description of what's wrong. -->
+
+## Steps to reproduce
+
+1. 
+2. 
+3. 
+
+## Expected behavior
+
+<!-- What should have happened. -->
+
+## Environment
+
+- OS: 
+- Python version: 
+- Agent: (Claude Code / Codex / Pi / manual)
+- GitHub theme: (light / dark)
+
+## Screenshots
+
+<!-- Paste any screenshots showing the rendering issue. -->

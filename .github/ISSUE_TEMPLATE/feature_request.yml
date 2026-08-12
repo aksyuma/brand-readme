@@ -1,0 +1,21 @@
+---
+name: Feature Request
+description: Suggest a new component type or enhancement
+labels: ["enhancement"]
+---
+
+## Component / feature
+
+<!-- What would you like added? e.g., "A contributor grid component" -->
+
+## Use case
+
+<!-- When would you use this? What problem does it solve? -->
+
+## Proposed design
+
+<!-- Optional: sketch the layout, describe parameters, reference examples. -->
+
+## Alternatives considered
+
+<!-- Other approaches you thought about. -->

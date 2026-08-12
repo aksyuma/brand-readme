@@ -1,0 +1,12 @@
+# Default owner for everything
+* @aksyuma
+
+# Skill specs and references
+skills/brand-readme/references/ @aksyuma
+skills/brand-readme/SKILL.md @aksyuma
+
+# Scripts
+skills/brand-readme/scripts/ @aksyuma
+
+# CI
+.github/ @aksyuma

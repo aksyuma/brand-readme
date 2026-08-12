@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 220" width="800" height="220">
+  <style>
+    .paper { fill: var(--paper, #0d1117); }
+    .ink { fill: var(--ink, #f0f6fc); font-family: var(--font-title, -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans", Helvetica, Arial, sans-serif); }
+    .muted { fill: var(--muted, #8b949e); font-family: var(--font-body, -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans", Helvetica, Arial, sans-serif); }
+    .mono { font-family: var(--font-mono, ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace); font-size: 11px; }
+    .accent { fill: var(--accent, #58a6ff); }
+    .hairline { stroke: var(--muted, #8b949e); stroke-opacity: 0.2; stroke-width: 1px; }
+  </style>
+  <rect width="100%" height="100%" class="paper" />
+
+  <!-- Version Pill -->
+  <rect x="40" y="36" width="64" height="20" rx="3"
+        fill="var(--paper-2, #161b22)"
+        stroke="var(--muted, #8b949e)" stroke-opacity="0.3" stroke-width="0.5"/>
+  <text x="72" y="50" text-anchor="middle" class="muted mono">v1.0.0</text>
+
+  <!-- Main Title -->
+  <text x="40" y="96" class="ink" font-size="32" font-weight="700">
+    Project Title<tspan class="accent">.</tspan>
+  </text>
+
+  <!-- Tagline -->
+  <text x="40" y="132" class="muted" font-size="15" font-weight="400">
+    Editorial-grade typography components for clean project presentation.
+  </text>
+
+  <!-- Metadata Row -->
+  <text x="40" y="176" class="muted mono">
+    LICENSE: MIT   •   RUNTIME: ZERO-DEP   •   STATUS: PRODUCTION
+  </text>
+
+  <!-- Bottom Hairline -->
+  <line x1="0" y1="219" x2="800" y2="219" class="hairline" />
+</svg>

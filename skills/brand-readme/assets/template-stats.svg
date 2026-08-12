@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 140" width="800" height="140">
+  <style>
+    .paper { fill: var(--paper, #ffffff); }
+    .card { fill: var(--paper-2, #f6f8fa); stroke: var(--muted, #656d76); stroke-opacity: 0.2; }
+    .label { font-family: var(--font-mono, ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace); font-size: 10px; fill: var(--muted, #656d76); letter-spacing: 1.5px; }
+    .val { font-family: var(--font-mono, ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace); font-size: 32px; font-weight: 700; fill: var(--ink, #1f2328); }
+    .accent-val { fill: var(--accent, #0969da); }
+  </style>
+  <rect width="100%" height="100%" class="paper" />
+
+  <!-- Stat Item 1 (focal) -->
+  <rect x="0" y="0" width="250" height="140" rx="4" class="card" />
+  <text x="24" y="40" class="label">P99 LATENCY</text>
+  <text x="24" y="90" class="val accent-val">1.2<tspan font-size="18">ms</tspan></text>
+
+  <!-- Stat Item 2 -->
+  <rect x="275" y="0" width="250" height="140" rx="4" class="card" />
+  <text x="299" y="40" class="label">MEMORY FOOTPRINT</text>
+  <text x="299" y="90" class="val">14<tspan font-size="18">MB</tspan></text>
+
+  <!-- Stat Item 3 -->
+  <rect x="550" y="0" width="250" height="140" rx="4" class="card" />
+  <text x="574" y="40" class="label">TEST COVERAGE</text>
+  <text x="574" y="90" class="val">99.8<tspan font-size="18">%</tspan></text>
+</svg>
